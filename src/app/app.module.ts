@@ -13,6 +13,8 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { ComponentsModule } from "./components/components.module";
+import { LoginComponent } from './pages/login/login.component';
+import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from "angularx-social-login";
 
 @NgModule({
   imports: [
@@ -23,10 +25,31 @@ import { ComponentsModule } from "./components/components.module";
     NgbModule,
     RouterModule,
     AppRoutingModule,
+    SocialLoginModule,
     ToastrModule.forRoot()
   ],
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent],
-  providers: [],
+  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, LoginComponent],
+  providers: [
+
+      {
+        provide: 'SocialAuthServiceConfig',
+        useValue: {
+          autoLogin: false,
+          providers: [
+            {
+              id: GoogleLoginProvider.PROVIDER_ID,
+              provider: new GoogleLoginProvider(
+                '854301994164-e0uuse5actn4jtf3obdj7vi9trurlq5o.apps.googleusercontent.com'
+              )
+            },
+          ],
+          onError: (err) => {
+            console.error(err);
+          }
+        } as SocialAuthServiceConfig,
+      }
+    ],
+  
   bootstrap: [AppComponent]
 })
 export class AppModule {}

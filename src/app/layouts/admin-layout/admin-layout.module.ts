@@ -11,6 +11,7 @@ import { DashboardComponent } from "../../pages/dashboard/dashboard.component";
 
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
+
 @NgModule({
   imports: [
     CommonModule,
@@ -21,6 +22,7 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
   ],
   declarations: [
     DashboardComponent,
+    //LoginComponent
   ]
 })
 export class AdminLayoutModule {}

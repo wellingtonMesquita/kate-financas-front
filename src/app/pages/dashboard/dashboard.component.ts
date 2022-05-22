@@ -287,6 +287,7 @@ export class DashboardComponent implements OnInit {
           ticks: {
             suggestedMin: 60,
             suggestedMax: 120,
+            stepSize: 50,// isso aqui que define o intervalo
             padding: 20,
             fontColor: "#9e9e9e"
           }
@@ -317,7 +318,7 @@ export class DashboardComponent implements OnInit {
     gradientStroke.addColorStop(0, 'rgba(233,32,16,0)'); //red colors
 
     var data = {
-      labels: ['JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
+      labels: ['5D', '10D', '15D', '20D', '25D','30D',],
       datasets: [{
         label: "Data",
         fill: true,
